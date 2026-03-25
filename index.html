@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optiker Brabæk — Personlig betjening & høj faglighed</title>
+    <meta name="description" content="Optiker Brabæk tilbyder personlig betjening, synsprøver, kontaktlinser og eksklusive brillemærker med høj faglighed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Struktureret data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Optician",
+        "name": "Optiker Brabæk",
+        "description": "Personlig betjening og høj faglighed. Synsprøver, kontaktlinser og eksklusive brillemærker.",
+        "url": "https://www.optiker-brabaek.dk",
+        "telephone": "[Telefonnummer]",
+        "email": "[Email]",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "[Gadenavn og nummer]",
+            "addressLocality": "[By]",
+            "postalCode": "[Postnr.]",
+            "addressCountry": "DK"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "09:30",
+                "closes": "17:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "10:00",
+                "closes": "14:00"
+            }
+        ],
+        "priceRange": "$$",
+        "image": "",
+        "sameAs": []
+    }
+    </script>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #222222;
+            --gold: #c8a45c;
+            --gold-light: #d4b76a;
+            --gold-dark: #a8884a;
+            --text-primary: #f0ece4;
+            --text-secondary: #a09888;
+            --text-muted: #6a6258;
+            --border: #2a2520;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 3rem;
+            box-shadow: 0 1px 0 rgba(200, 164, 92, 0.1);
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== STICKY BOOK TID ===== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.8rem;
+            background: var(--gold);
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 24px rgba(200, 164, 92, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .sticky-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sticky-cta:hover {
+            background: var(--gold-light);
+            box-shadow: 0 6px 32px rgba(200, 164, 92, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .sticky-cta svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(200, 164, 92, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1s forwards;
+        }
+
+        .hero-scroll .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 7rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        /* ===== OM OS ===== */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            aspect-ratio: 3/4;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 60px;
+            height: 60px;
+            border-top: 1px solid var(--gold);
+            border-right: 1px solid var(--gold);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: -1px;
+            width: 60px;
+            height: 60px;
+            border-bottom: 1px solid var(--gold);
+            border-left: 1px solid var(--gold);
+        }
+
+        .about-image-placeholder {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ===== YDELSER ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            border-color: rgba(200, 164, 92, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ===== TILSKUD ===== */
+        .subsidy {
+            background: var(--bg-secondary);
+        }
+
+        .subsidy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .subsidy-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subsidy-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .subsidy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .subsidy-card:hover {
+            border-color: rgba(200, 164, 92, 0.2);
+        }
+
+        .subsidy-card-icon {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        .subsidy-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .subsidy-card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ===== MÆRKER ===== */
+        .brands {
+            background: var(--bg-primary);
+        }
+
+        .brands-intro {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .brand-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .brand-item:hover {
+            border-color: rgba(200, 164, 92, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-type {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== ANMELDELSER ===== */
+        .reviews {
+            background: var(--bg-secondary);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.2rem;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--gold);
+        }
+
+        .review-name {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .review-source {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .reviews-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .reviews-cta a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(200, 164, 92, 0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease;
+        }
+
+        .reviews-cta a:hover {
+            border-color: var(--gold);
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background: var(--bg-primary);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(200, 164, 92, 0.2);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 400;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+        }
+
+        .faq-toggle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ===== KONTAKT ===== */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-info-group h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+        }
+
+        .contact-info-group p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .contact-info-group a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-group a:hover {
+            color: var(--gold);
+        }
+
+        .contact-transport {
+            margin-top: 0.5rem;
+        }
+
+        .contact-transport p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .contact-map {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-map-placeholder {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hours-table {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(42, 37, 32, 0.5);
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .hours-time {
+            color: var(--text-primary);
+            font-size: 0.92rem;
+            font-weight: 400;
+        }
+
+        /* ===== NYHEDSBREV ===== */
+        .newsletter {
+            background: var(--bg-primary);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .newsletter .container {
+            max-width: 600px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            margin-top: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 0.9rem 1.3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-right: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: var(--text-muted);
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+
+        .newsletter-form button {
+            padding: 0.9rem 1.8rem;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: 1px solid var(--gold);
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+        }
+
+        .newsletter-note {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== INSTAGRAM ===== */
+        .instagram {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .instagram-item:hover {
+            border-color: rgba(200, 164, 92, 0.3);
+            transform: scale(1.02);
+        }
+
+        .instagram-item span {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .instagram-handle {
+            margin-top: 2rem;
+        }
+
+        .instagram-handle a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .instagram-handle a:hover {
+            color: var(--gold-light);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-main {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-brand .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.78rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--gold);
+        }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 1.3rem 2rem;
+            z-index: 2000;
+            display: none;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .cookie-text a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.4rem;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .cookie-btn-accept {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
+
+        .cookie-btn-accept:hover {
+            background: var(--gold-light);
+        }
+
+        .cookie-btn-decline {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .cookie-btn-decline:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                max-height: 350px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subsidy-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav.scrolled {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .nav-hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-hamburger.open span:nth-child(1) {
+                transform: rotate(45deg) translateY(4.5px);
+            }
+
+            .nav-hamburger.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-hamburger.open span:nth-child(3) {
+                transform: rotate(-45deg) translateY(-4.5px);
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input[type="email"] {
+                border-right: 1px solid var(--border);
+            }
+
+            .sticky-cta {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.4rem;
+                font-size: 0.75rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">Optiker <span>Brabæk</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#om" onclick="closeMenu()">Om os</a></li>
+            <li><a href="#ydelser" onclick="closeMenu()">Ydelser</a></li>
+            <li><a href="#maerker" onclick="closeMenu()">Mærker</a></li>
+            <li><a href="#anmeldelser" onclick="closeMenu()">Anmeldelser</a></li>
+            <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+            <li><a href="#kontakt" onclick="closeMenu()">Kontakt</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Sticky Book Tid -->
+    <a href="#kontakt" class="sticky-cta" id="stickyCta">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+        Book en tid
+    </a>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-eyebrow">Personlig betjening &middot; Høj faglighed</p>
+        <h1>Dit syn fortjener<br><em>det allerbedste</em></h1>
+        <p class="hero-subtitle">
+            Hos Optiker Brabæk møder du en dedikeret fagperson, der tager sig tid til dig.
+            Hver synsprøve, hver brille og hvert råd er skræddersyet til netop dine behov.
+        </p>
+        <a href="#kontakt" class="hero-cta">Book en tid</a>
+        <a href="#om" class="hero-scroll">
+            <span>Scroll</span>
+            <span class="line"></span>
+        </a>
+    </section>
+
+    <!-- Om os -->
+    <section class="about" id="om">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <span class="about-image-placeholder">Billede af butikken</span>
+                </div>
+                <div class="about-text fade-in">
+                    <p class="section-eyebrow">Om os</p>
+                    <h2 class="section-title">Faglighed du kan<br>stole på</h2>
+                    <div class="section-divider"></div>
+                    <p>
+                        Optiker Brabæk er bygget på en grundlæggende overbevisning: dit syn fortjener
+                        mere end en hurtig standardløsning. Med mange års erfaring i branchen
+                        leverer vi en grundig og personlig tilgang til hvert eneste kundemøde.
+                    </p>
+                    <p>
+                        Vi tror på, at den rigtige brille både skal passe til dit syn og din
+                        personlighed. Derfor tager vi os altid tid til en grundig dialog, en
+                        præcis synsprøve og en omhyggelig tilpasning — hver gang.
+                    </p>
+                    <div class="about-stats">
+                        <div>
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Års erfaring</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Personlig service</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Stel i butikken</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ydelser -->
+    <section class="services" id="ydelser">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Vores ydelser</p>
+            <h2 class="section-title fade-in">Ekspertise i<br>hver detalje</h2>
+            <div class="section-divider fade-in"></div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">&#9678;</span>
+                    <h3>Synsprøver</h3>
+                    <p>
+                        En grundig synsprøve med den nyeste teknologi. Vi undersøger ikke
+                        kun dit syn, men også øjnenes generelle sundhed — og vi tager os
+                        den tid, der skal til.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">&#9684;</span>
+                    <h3>Kontaktlinser</h3>
+                    <p>
+                        Professionel kontaktlinsetilpasning med individuel vejledning.
+                        Vi finder den perfekte linse til din hverdag, hvad enten det er
+                        daglige, månedlige eller speciallinser.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">&#9830;</span>
+                    <h3>Brillemode</h3>
+                    <p>
+                        Et nøje udvalgt sortiment af eksklusive og trendsættende
+                        brillemærker. Vi hjælper dig med at finde den perfekte brille,
+                        der matcher din stil og dit ansigt.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tilskud & Sygesikring -->
+    <section class="subsidy" id="tilskud">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Tilskud & sygesikring</p>
+            <h2 class="section-title fade-in">Få mest muligt<br>ud af dit tilskud</h2>
+            <div class="section-divider fade-in"></div>
+            <div class="subsidy-content">
+                <div class="subsidy-text fade-in">
+                    <p>
+                        Mange danskere er berettiget til tilskud til briller og kontaktlinser
+                        uden at vide det. Vi hjælper dig med at navigere mulighederne, så du
+                        får den økonomi, du har ret til.
+                    </p>
+                    <p>
+                        Vi samarbejder med alle relevante tilskudsordninger og guider dig
+                        igennem processen — fra ansøgning til godkendelse.
+                    </p>
+                </div>
+                <div class="subsidy-cards fade-in">
+                    <div class="subsidy-card">
+                        <span class="subsidy-card-icon">&#10003;</span>
+                        <div>
+                            <h4>Sygesikringen "danmark"</h4>
+                            <p>Er du medlem af Sygeforsikringen "danmark", kan du få tilskud til både briller og kontaktlinser.</p>
+                        </div>
+                    </div>
+                    <div class="subsidy-card">
+                        <span class="subsidy-card-icon">&#10003;</span>
+                        <div>
+                            <h4>Kommunalt tilskud</h4>
+                            <p>Ved særlige synsnedsættelser kan din kommune bevilge tilskud til synshjælpemidler.</p>
+                        </div>
+                    </div>
+                    <div class="subsidy-card">
+                        <span class="subsidy-card-icon">&#10003;</span>
+                        <div>
+                            <h4>Sundhedsforsikring</h4>
+                            <p>Mange arbejdsgivere tilbyder sundhedsforsikringer der dækker synsprøver og briller.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mærker -->
+    <section class="brands" id="maerker">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Udvalgte mærker</p>
+            <h2 class="section-title fade-in">Kvalitet &<br>håndværk</h2>
+            <div class="section-divider fade-in"></div>
+            <p class="brands-intro fade-in">
+                Vi samarbejder med nogle af verdens fineste brillemærker — udvalgt for
+                deres kvalitet, design og holdbarhed.
+            </p>
+            <div class="brands-grid">
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Lindberg</p>
+                    <p class="brand-type">Dansk design</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Tom Ford</p>
+                    <p class="brand-type">Luksus</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Ray-Ban</p>
+                    <p class="brand-type">Ikonisk</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Oliver Peoples</p>
+                    <p class="brand-type">Håndværk</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Mykita</p>
+                    <p class="brand-type">Innovation</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Persol</p>
+                    <p class="brand-type">Italiensk arv</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">ic! berlin</p>
+                    <p class="brand-type">Skrueløst design</p>
+                </div>
+                <div class="brand-item fade-in">
+                    <p class="brand-name">Silhouette</p>
+                    <p class="brand-type">Letvægt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anmeldelser -->
+    <section class="reviews" id="anmeldelser">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Kundeanmeldelser</p>
+            <h2 class="section-title fade-in">Det siger<br>vores kunder</h2>
+            <div class="section-divider fade-in"></div>
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">
+                        "En fantastisk oplevelse fra start til slut. Grundig synsprøve og
+                        utrolig god vejledning til valg af stel. Jeg har aldrig følt mig
+                        bedre hjulpet hos en optiker."
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">M</div>
+                        <div>
+                            <p class="review-name">Marie L.</p>
+                            <p class="review-source">Google Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">
+                        "Professionel og personlig service. Man mærker virkelig at der
+                        bliver taget sig tid til én. Mine nye briller sidder perfekt,
+                        og jeg kan se som aldrig før."
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">J</div>
+                        <div>
+                            <p class="review-name">Jakob H.</p>
+                            <p class="review-source">Google Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">
+                        "Endelig en optiker der lytter! Fik den bedste rådgivning
+                        omkring kontaktlinser, og opfølgningen var i top. Kan varmt
+                        anbefales til alle."
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <p class="review-name">Sofie K.</p>
+                            <p class="review-source">Trustpilot</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-cta fade-in">
+                <a href="#">Se alle anmeldelser &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Ofte stillede spørgsmål</p>
+            <h2 class="section-title fade-in">Det vil du<br>måske vide</h2>
+            <div class="section-divider fade-in"></div>
+            <div class="faq-grid">
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Hvad koster en synsprøve?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            En synsprøve hos Optiker Brabæk koster [pris] kr. Prisen inkluderer en grundig
+                            undersøgelse af dit syn samt en vurdering af øjnenes generelle sundhed.
+                            Synsprøven er gratis ved køb af briller.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Kan jeg bruge mit sygesikringsbevis?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Ja, er du medlem af Sygeforsikringen "danmark", kan du få tilskud til briller og
+                            kontaktlinser. Vi hjælper dig med at søge tilskuddet direkte i butikken,
+                            så du slipper for besværet.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Hvor hurtigt får jeg mine briller?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Leveringstiden afhænger af stelvalg og glastilpasning. Typisk er dine
+                            briller klar inden for 5–10 hverdage. Ved enkeltstyrkeglas kan det ofte
+                            gå hurtigere. Vi kontakter dig, så snart de er klar.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Skal jeg bestille tid til synsprøve?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Vi anbefaler at bestille tid, så vi kan sikre at der er afsat nok tid
+                            til en grundig undersøgelse. Du er dog altid velkommen til at kigge
+                            forbi for rådgivning og prøve stel.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Tilbyder I kontaktlinseabonnement?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Ja, vi tilbyder fleksible kontaktlinseabonnementer med levering direkte
+                            til din adresse. Prisen afhænger af linsetypen. Kontakt os for et
+                            uforpligtende tilbud.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Kan I reparere mine briller?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Ja, vi tilbyder justering og mindre reparationer — ofte mens du
+                            venter. Ved større skader vurderer vi om reparation er mulig, eller
+                            om nye glas/stel er en bedre løsning.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Kontakt os</p>
+            <h2 class="section-title fade-in">Vi ser frem til<br>at møde dig</h2>
+            <div class="section-divider fade-in"></div>
+            <div class="contact-grid">
+                <div class="fade-in">
+                    <div class="contact-info-group">
+                        <h3>Adresse</h3>
+                        <p>
+                            [Gadenavn og nummer]<br>
+                            [Postnr. og by]
+                        </p>
+                        <div class="contact-transport">
+                            <p>[Parkeringsinfo / offentlig transport]</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-group">
+                        <h3>Kontakt</h3>
+                        <p>
+                            Tlf: <a href="tel:+4500000000">[Telefonnummer]</a><br>
+                            Email: <a href="mailto:info@optiker-brabaek.dk">[Email]</a>
+                        </p>
+                    </div>
+                    <div class="contact-info-group">
+                        <h3>Åbningstider</h3>
+                        <div class="hours-table">
+                            <div class="hours-row">
+                                <span class="hours-day">Mandag – Fredag</span>
+                                <span class="hours-time">09:30 – 17:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="hours-day">Lørdag</span>
+                                <span class="hours-time">10:00 – 14:00</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="hours-day">Søndag</span>
+                                <span class="hours-time">Lukket</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map fade-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d500!2d12.4284959!3d55.8552553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sdk"
+                        width="100%"
+                        height="100%"
+                        style="border:0; min-height:350px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nyhedsbrev -->
+    <section class="newsletter">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Nyhedsbrev</p>
+            <h2 class="section-title fade-in">Hold dig opdateret</h2>
+            <div class="section-divider fade-in" style="margin-left:auto;margin-right:auto;"></div>
+            <p class="fade-in" style="color:var(--text-secondary); font-size:1rem; max-width:450px; margin:0 auto;">
+                Tilmeld dig vores nyhedsbrev og modtag nyheder om nye kollektioner,
+                tilbud og tips til dit syn.
+            </p>
+            <form class="newsletter-form fade-in" onsubmit="event.preventDefault(); alert('Tak for din tilmelding!');">
+                <input type="email" placeholder="Din email-adresse" required>
+                <button type="submit">Tilmeld</button>
+            </form>
+            <p class="newsletter-note fade-in">Vi sender max 2 emails om måneden. Du kan altid afmelde dig.</p>
+        </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="instagram">
+        <div class="container">
+            <p class="section-eyebrow fade-in">Følg os</p>
+            <h2 class="section-title fade-in">Instagram</h2>
+            <div class="section-divider fade-in" style="margin-left:auto;margin-right:auto;"></div>
+            <div class="instagram-grid fade-in">
+                <div class="instagram-item"><span>Foto 1</span></div>
+                <div class="instagram-item"><span>Foto 2</span></div>
+                <div class="instagram-item"><span>Foto 3</span></div>
+                <div class="instagram-item"><span>Foto 4</span></div>
+            </div>
+            <div class="instagram-handle fade-in">
+                <a href="#">@optiker.brabaek</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <p class="footer-logo">Optiker <span>Brabæk</span></p>
+                <p>Personlig betjening og høj faglighed<br>— siden [årstal].</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#om">Om os</a></li>
+                    <li><a href="#ydelser">Ydelser</a></li>
+                    <li><a href="#tilskud">Tilskud</a></li>
+                    <li><a href="#maerker">Mærker</a></li>
+                    <li><a href="#anmeldelser">Anmeldelser</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+4500000000">[Telefonnummer]</a></li>
+                    <li><a href="mailto:info@optiker-brabaek.dk">[Email]</a></li>
+                    <li><a href="#">[Gadenavn], [By]</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Optiker Brabæk &middot; CVR: [CVR-nummer]</p>
+            <div class="footer-legal">
+                <a href="#privatlivspolitik">Privatlivspolitik</a>
+                <a href="#cookiepolitik">Cookiepolitik</a>
+                <a href="#handelsbetingelser">Handelsbetingelser</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-inner">
+            <p class="cookie-text">
+                Vi bruger cookies for at forbedre din oplevelse på vores hjemmeside.
+                Læs mere i vores <a href="#cookiepolitik">cookiepolitik</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-decline" onclick="closeCookieBanner(false)">Kun nødvendige</button>
+                <button class="cookie-btn cookie-btn-accept" onclick="closeCookieBanner(true)">Acceptér alle</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const stickyCta = document.getElementById('stickyCta');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            stickyCta.classList.toggle('visible', window.scrollY > 600);
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('open');
+            navLinks.classList.remove('open');
+        }
+
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // FAQ accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const wasOpen = item.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+            // Toggle clicked
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Cookie banner
+        function closeCookieBanner(accepted) {
+            document.getElementById('cookieBanner').classList.remove('show');
+            localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'declined');
+        }
+
+        // Show cookie banner if no consent given
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                document.getElementById('cookieBanner').classList.add('show');
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
